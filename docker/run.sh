@@ -19,8 +19,12 @@ conf dir "dir ${kvrocks_dir-/var/lib/kvrocks}"
 [ -n "$kvrocks_workers" ] && conf workers "workers $kvrocks_workers"
 [ -n "$kvrocks_cluster_enabled" ] && conf "cluster-enabled" "cluster-enabled $kvrocks_cluster_enabled"
 
-[ -n "$kvrocks_masterauth" ] && conf "# masterauth foobared" "masterauth $kvrocks_masterauth"
-[ -n "$kvrocks_slaveof" ] && conf "# slaveof 127.0.0.1 6379" "slaveof $kvrocks_cluster_enabled"
+[ -n "$kvrocks_rocksdb_enable_blob_files" ] && conf "rocksdb.enable_blob_files" "rocksdb.enable_blob_files $kvrocks_rocksdb_enable_blob_files"
+[ -n "$kvrocks_rocksdb_compression" ] && conf "rocksdb.compression" "rocksdb.compression $kvrocks_rocksdb_compression"
+
+[ -n "$kvrocks_requirepass" ] && conf "# requirepass" "requirepass $kvrocks_requirepass"
+[ -n "$kvrocks_masterauth" ] && conf "# masterauth" "masterauth $kvrocks_masterauth"
+[ -n "$kvrocks_slaveof" ] && conf "# slaveof 127.0.0.1" "slaveof $kvrocks_slaveof"
 
 run=$(cat _run.sh)
 mv _run.sh run.sh

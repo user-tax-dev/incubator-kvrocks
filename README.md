@@ -102,7 +102,7 @@ $ ./build/kvrocks -c kvrocks.conf
 $ docker run -it -p 6666:6666 kvrocks/kvrocks
 ```
 
-When use docker, some configure, such as : port, masterauth password, log directory, can be set by environment variables ( see [docker/run.sh](./docker/run.sh) for details ) .
+When use docker, some configure, such as : port,  password, log directory, can be set by environment variables ( see [docker/run.sh](./docker/run.sh) for details ) .
 
 For example , in your `docker-compose.yml` , you can write :
 
@@ -114,7 +114,7 @@ services:
     image: kvrocks/kvrocks
     restart: always
     environment:
-      kvrocks_masterauth: ${KVROCKS_PASSWORD}
+      kvrocks_requirepass: ${KVROCKS_PASSWORD}
       kvrocks_port: ${KVROCKS_PORT}
       kvrocks_log_dir: /log
     volumes:
